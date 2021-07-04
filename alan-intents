@@ -1,0 +1,21 @@
+// Use this sample to create your own voice commands
+intent('add item $(item* (.*))', p => {
+    const itemName = p.item.value.toLowerCase() 
+    p.play({ command: 'add-todo', itemName });
+});
+
+intent('remove item $(item* (.*))', p => {
+    const itemName = p.item.value.toLowerCase() 
+    p.play({ command: 'remove-todo', itemName });
+});
+
+
+intent('check item $(item* (.*))', p => {
+    const itemName = p.item.value.toLowerCase() 
+    p.play({ command: 'check-todo', itemName });
+});
+
+intent('uncheck item $(item* (.*))', p => {
+    const itemName = p.item.value.toLowerCase() 
+    p.play({ command: 'uncheck-todo', itemName });
+});
