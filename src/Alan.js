@@ -1,10 +1,10 @@
-import {useCallback, useContext, useEffect, useState} from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import { TodoContext } from "./GlobalContext";
 
 const COMMANDS = {
     ADD_TODO: "add-todo",
-    REMOVE_TODO: 'remove-todo', 
+    REMOVE_TODO: 'remove-todo',
     CHECK_TODO: 'check-todo',
     UNCHECK_TODO: 'uncheck-todo',
 }
@@ -15,37 +15,37 @@ function Alan() {
     const { todo, setTodo } = useContext(TodoContext);
 
     const addTodo = useCallback(({ detail }) => {
-        setTodo([ ...todo, detail ])
-    }, [ todo, setTodo ])
+        setTodo([...todo, detail])
+    }, [todo, setTodo])
 
     const removeTodo = useCallback(({ detail }) => {
         const item = todo.find(t => t.itemName === detail.itemName)
-        if(item === undefined) {
+        if (item === undefined) {
             alanInstance.playText(`Sorry, item ${detail.itemName} does not exists in the list `)
             return
         }
-        setTodo([ ...todo.filter(todo => todo.itemName !== detail.itemName) ])
-    }, [ todo, setTodo, alanInstance ])
+        setTodo([...todo.filter(todo => todo.itemName !== detail.itemName)])
+    }, [todo, setTodo, alanInstance])
 
     const checkTodo = useCallback(({ detail }) => {
         const item = todo.find(t => t.itemName === detail.itemName)
-        if(item === undefined) {
+        if (item === undefined) {
             alanInstance.playText(`Sorry, item ${detail.itemName} does not exists in the list `)
             return
         }
         item.checked = true
-        setTodo([ ...todo ])
-    }, [ todo, setTodo, alanInstance ])
+        setTodo([...todo])
+    }, [todo, setTodo, alanInstance])
 
     const uncheckTodo = useCallback(({ detail }) => {
         const item = todo.find(t => t.itemName === detail.itemName)
-        if(item === undefined) {
+        if (item === undefined) {
             alanInstance.playText(`Sorry, item ${detail.itemName} does not exists in the list `)
             return
         }
         item.checked = false
-        setTodo([ ...todo ])
-    }, [ todo, setTodo, alanInstance ])
+        setTodo([...todo])
+    }, [todo, setTodo, alanInstance])
 
     useEffect(() => {
         window.addEventListener(COMMANDS.ADD_TODO, addTodo)
