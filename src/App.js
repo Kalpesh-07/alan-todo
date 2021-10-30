@@ -36,26 +36,4 @@ function App() {
 
 export default App;
 
-// /v1/analyze?version=2019-07-12&url={articles url}&features=sentiment_
-// curl -X GET -u "apikey:4b8GQCC_2SfoK2_EoaCMJr1AQd0eZi3hs-nbe26De7dO" "{url}/{method}"
-
-//jased95816@bbsaili.com
-//Password@123
-
-// <!-- exclusion of hostsprofile file -->
-//
-// <build>
-//     <plugins>
-//         <plugin>
-//             <groupId>org.apache.maven.plugins</groupId>
-//             <artifactId>maven-jar-plugin</artifactId>
-//             <version>3.2.0</version>
-//             <configuration>
-//                 <excludes>
-//                     <exclude>install/config/defaultConfig/com.netcracker.billops.model.profiles.HostsProfile</exclude>
-//                 </excludes>
-//             </configuration>
-//         </plugin>
-//     </plugins>
-// </build>
 
